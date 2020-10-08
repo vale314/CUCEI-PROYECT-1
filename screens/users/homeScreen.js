@@ -29,7 +29,6 @@ const HomeScreen = (props) => {
   return (
     <ScrollView style={styles.scrollView}>
       <Carousel data={data} />
-      <Text> Hello</Text>
     </ScrollView>
   );
 };
