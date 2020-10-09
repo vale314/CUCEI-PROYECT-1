@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Platform, ScrollView, Image } from "react-native";
+import { View, Text, Platform, ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import HeaderButton from "../../components/UI/HeaderButton";
@@ -7,6 +7,7 @@ import HeaderButton from "../../components/UI/HeaderButton";
 import Carousel from "../../components/carousel/carousel";
 
 import { data } from "../../components/data/data";
+import ScrollButton from "../../components/top-setting/scrollButton";
 
 const styles = {
   image: {
@@ -25,9 +26,35 @@ const styles = {
 const uri =
   "https://images.pexels.com/photos/1603845/pexels-photo-1603845.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
 
+const dataB = [
+  {
+    title: "Rango De Precios",
+    icon: "tagso",
+    sizeIcon: 25,
+    route: "price",
+  },
+  {
+    title: "Top",
+    icon: "null",
+    route: "top",
+  },
+  {
+    title: "Mas Popular",
+    icon: "up",
+    sizeIcon: 15,
+    route: "popular",
+  },
+  {
+    title: "Tipos De Dietas",
+    icon: "hearto",
+    sizeIcon: 15,
+    route: "diet",
+  },
+];
 const HomeScreen = (props) => {
   return (
     <ScrollView style={styles.scrollView}>
+      <ScrollButton data={dataB} />
       <Carousel data={data} />
     </ScrollView>
   );
