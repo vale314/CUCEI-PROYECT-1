@@ -9,6 +9,8 @@ import Carousel from "../../components/carousel/carousel";
 import { data } from "../../components/data/data";
 import ScrollButton from "../../components/top-setting/scrollButton";
 
+import filter from "../../constants/Filter";
+
 const styles = {
   image: {
     width: "100%",
@@ -31,30 +33,34 @@ const dataB = [
     title: "Rango De Precios",
     icon: "tagso",
     sizeIcon: 25,
-    route: "price",
+    route: "Price",
+    filter: null,
   },
   {
     title: "Top",
     icon: "null",
-    route: "top",
+    route: "Shop",
+    filter: filter.TOP,
   },
   {
     title: "Mas Popular",
     icon: "up",
     sizeIcon: 15,
-    route: "popular",
+    route: "Shop",
+    filter: filter.POPULAR,
   },
   {
     title: "Tipos De Dietas",
     icon: "hearto",
     sizeIcon: 15,
-    route: "diet",
+    route: "Diet",
+    filter: null,
   },
 ];
 const HomeScreen = (props) => {
   return (
     <ScrollView style={styles.scrollView}>
-      <ScrollButton data={dataB} />
+      <ScrollButton data={dataB} {...props} />
       <Carousel data={data} />
     </ScrollView>
   );

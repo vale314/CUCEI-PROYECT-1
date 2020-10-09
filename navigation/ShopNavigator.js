@@ -30,7 +30,15 @@ import SettingsScreen, {
 
 import PlaceScreen, {
   screenOptions as placeOptionsScreen,
-} from "../screens/users/place/placeScreen";
+} from "../screens/users/util/placeScreen";
+
+import PriceScreen, {
+  priceScreen as priceOptionsScreen,
+} from "../screens/users/util/price/priceScreen";
+
+import DietScreen, {
+  dietScreen as dietOptionsScreen,
+} from "../screens/users/util/dietScreen";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -61,6 +69,16 @@ export const HomeNavigator = () => {
         name="Place"
         component={PlaceScreen}
         options={placeOptionsScreen}
+      />
+      <StackHome.Screen
+        name="Diet"
+        component={DietScreen}
+        options={dietOptionsScreen}
+      />
+      <StackHome.Screen
+        name="Price"
+        component={PriceScreen}
+        options={priceOptionsScreen}
       />
     </StackHome.Navigator>
   );
