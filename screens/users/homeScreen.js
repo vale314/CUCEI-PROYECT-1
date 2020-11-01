@@ -39,14 +39,14 @@ const dataB = [
   {
     title: "Top",
     icon: "null",
-    route: "Shop",
+    route: "",
     filter: filter.TOP,
   },
   {
     title: "Mas Popular",
     icon: "up",
     sizeIcon: 15,
-    route: "Shop",
+    route: "",
     filter: filter.POPULAR,
   },
   {

@@ -1,5 +1,5 @@
 import { data } from "../../components/data/data";
-import { TOGGLE_FAVORITE, SET_FILTERS } from "../actions/meals";
+import { TOGGLE_FAVORITE, SET_FILTERS } from "../actions/foods";
 
 const initialState = {
   meals: data,
@@ -23,18 +23,18 @@ const mealsReducer = (state = initialState, action) => {
       }
     case SET_FILTERS:
       const appliedFilter = action.filter;
-      const found = favoriteMeals.find((e) => (e = appliedFilter));
-      var filters = [...state.filters];
 
-      if (found) {
-        filters.push(appliedFilter);
+      const found = state.filters.findIndex(
+        (e) => e.title === appliedFilter.title
+      );
+
+      if (found >= 0) {
+        const filters = [...state.filters];
+        filters.splice(found, 1);
 
         return { ...state, filters };
       } else {
-        let index = filters.indexOf(appliedFilter);
-        appliedFilter.splice(index, 1);
-
-        return { ...state, filters };
+        return { ...state, filters: state.filters.concat(appliedFilter) };
       }
     default:
       return state;

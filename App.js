@@ -4,15 +4,21 @@ import { Provider } from "react-redux";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import ReduxThunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
+import foodsReducer from "./store/reducers/foods";
 import authReducer from "./store/reducers/auth";
 import AppNavigator from "./navigation/AppNavigator";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  foods: foodsReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(ReduxThunk))
+);
 
 const fetchFonts = () => {
   return Font.loadAsync({

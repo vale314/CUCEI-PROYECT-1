@@ -40,6 +40,10 @@ import DietScreen, {
   dietScreen as dietOptionsScreen,
 } from "../screens/users/util/dietScreen";
 
+import ShopScreen, {
+  shopScreen as shopOptionsScreen,
+} from "../screens/users/util/shopScreen";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const defaultNavOptions = {

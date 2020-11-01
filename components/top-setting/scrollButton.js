@@ -10,7 +10,6 @@ const ScrollButton = ({ data, navigation }) => {
   const dispatch = useDispatch();
 
   const onPress = (value) => {
-    console.log(value);
     if (value.filter !== null) dispatch(setFilters(value));
     else navigation.navigate(value.route);
   };
