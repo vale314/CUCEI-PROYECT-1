@@ -58,20 +58,50 @@ const PriceScrren = (props) => {
 
       <ButtonItem
         onPress={() => onPress(filter.PRICE_1)}
-        backgroundColor="black"
+        color={items.PRICE_1.price ? "black" : "rgba(0, 0, 0, 0.01)"}
       >
-        <FontAwesome name="dollar" size={25} color="white" />
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_1.price ? "white" : "black"}
+        />
       </ButtonItem>
 
-      <ButtonItem onPress={() => onPress(filter.PRICE_2)}>
-        <FontAwesome name="dollar" size={25} color="black" />
-        <FontAwesome name="dollar" size={25} color="black" />
+      <ButtonItem
+        onPress={() => onPress(filter.PRICE_2)}
+        color={items.PRICE_2.price ? "black" : "rgba(0, 0, 0, 0.01)"}
+      >
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_2.price ? "white" : "black"}
+        />
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_2.price ? "white" : "black"}
+        />
       </ButtonItem>
 
-      <ButtonItem onPress={() => onPress(filter.PRICE_3)}>
-        <FontAwesome name="dollar" size={25} color="black" />
-        <FontAwesome name="dollar" size={25} color="black" />
-        <FontAwesome name="dollar" size={25} color="black" />
+      <ButtonItem
+        onPress={() => onPress(filter.PRICE_3)}
+        color={items.PRICE_3.price ? "black" : "rgba(0, 0, 0, 0.01)"}
+      >
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_3.price ? "white" : "black"}
+        />
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_3.price ? "white" : "black"}
+        />
+        <FontAwesome
+          name="dollar"
+          size={25}
+          color={items.PRICE_3.price ? "white" : "black"}
+        />
       </ButtonItem>
 
       <ButtonText onPress={() => onPress(filter.PRICE_3)}>

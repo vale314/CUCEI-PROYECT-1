@@ -2,9 +2,12 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const ButtonItem = ({ onPress, children }) => {
+const ButtonItem = ({ onPress, children, color }) => {
   return (
-    <TouchableOpacity style={styles.SubmitButtonStyle} onPress={onPress}>
+    <TouchableOpacity
+      style={{ ...styles.SubmitButtonStyle, backgroundColor: color }}
+      onPress={onPress}
+    >
       {children}
     </TouchableOpacity>
   );
