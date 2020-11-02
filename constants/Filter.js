@@ -9,4 +9,5 @@ export default {
   TOP: "TOP",
   POPULAR: "POPULAR",
   DIET: "DIET",
+  RESET: "RESET",
 };

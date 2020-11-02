@@ -1,5 +1,5 @@
 import { data } from "../../components/data/data";
-import { TOGGLE_FAVORITE, SET_FILTERS } from "../actions/foods";
+import { TOGGLE_FAVORITE, SET_FILTERS, RESET_FILTERS } from "../actions/foods";
 
 const initialState = {
   meals: data,
@@ -36,6 +36,8 @@ const mealsReducer = (state = initialState, action) => {
       } else {
         return { ...state, filters: state.filters.concat(appliedFilter) };
       }
+    case RESET_FILTERS:
+      return { ...state, filters: initialState.filters };
     default:
       return state;
   }

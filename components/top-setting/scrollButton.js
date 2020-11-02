@@ -4,7 +4,7 @@ import ButtonItem from "./buttonItem";
 import { AntDesign } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setFilters } from "../../store/actions/foods";
+import { setFilters, setFiltersReset } from "../../store/actions/foods";
 import filter from "../../constants/Filter";
 import color from "../../constants/Colors";
 
@@ -42,6 +42,10 @@ const ScrollButton = ({ data, navigation }) => {
     else navigation.navigate(value.route);
   };
 
+  const onReset = () => {
+    dispatch(setFiltersReset());
+  };
+
   return (
     <ScrollView
       horizontal
@@ -53,6 +57,13 @@ const ScrollButton = ({ data, navigation }) => {
       alwaysBounceVertical={false}
       alwaysBounceHorizontal={false}
     >
+      {filtersActives.length ? (
+        <ButtonItem onPress={() => onReset()} color={color.buttonInactive}>
+          <Text style={{ color: color.textInactive }}> Limpiar</Text>
+        </ButtonItem>
+      ) : (
+        <View></View>
+      )}
       {data.map((i, j) => {
         return (
           <ButtonItem

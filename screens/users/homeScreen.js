@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Platform, ScrollView } from "react-native";
+import { Platform, ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from "react-redux";
 
 import HeaderButton from "../../components/UI/HeaderButton";
 
@@ -33,21 +34,21 @@ const dataB = [
     title: "Rango De Precios",
     icon: "tagso",
     sizeIcon: 25,
-    key: "ACTIVE_PRICE",
+    key: filter.ACTIVE_PRICE,
     route: "Price",
     filter: null,
   },
   {
     title: "Top",
     icon: "null",
-    key: "ACTIVE_TOP",
+    key: filter.ACTIVE_TOP,
     route: "",
     filter: filter.TOP,
   },
   {
     title: "Mas Popular",
     icon: "up",
-    key: "ACTIVE_POPULAR",
+    key: filter.ACTIVE_POPULAR,
     sizeIcon: 15,
     route: "",
     filter: filter.POPULAR,
@@ -56,7 +57,7 @@ const dataB = [
     title: "Tipos De Dietas",
     icon: "hearto",
     sizeIcon: 15,
-    key: "ACTIVE_DIET",
+    key: filter.ACTIVE_DIET,
     route: "Diet",
     filter: null,
   },
