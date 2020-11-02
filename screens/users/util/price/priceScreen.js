@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, Platform, StyleSheet } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,8 @@ import ButtonText from "./buttonText";
 import { FontAwesome } from "@expo/vector-icons";
 
 import filter from "../../../../constants/Filter";
+import color from "../../../../constants/Colors";
+
 import { setFilters } from "../../../../store/actions/foods";
 
 const PriceScrren = (props) => {
@@ -18,8 +20,10 @@ const PriceScrren = (props) => {
     PRICE_2: { price: false, title: filter.PRICE_2 },
     PRICE_3: { price: false, title: filter.PRICE_3 },
   };
-
   const [items, setItem] = useState(stateInitial);
+
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
 
   const dispatch = useDispatch();
 
@@ -33,16 +37,19 @@ const PriceScrren = (props) => {
     const itemAux = stateInitial;
 
     filtersActives.map((i) => {
-      if (i.title == itemAux.PRICE_1.title)
+      if (i.title == itemAux.PRICE_1.title) {
         itemAux.PRICE_1.price = !itemAux.PRICE_1.price;
+      }
 
-      if (i.title == itemAux.PRICE_2.title)
+      if (i.title == itemAux.PRICE_2.title) {
         itemAux.PRICE_2.price = !itemAux.PRICE_2.price;
-
-      if (i.title == itemAux.PRICE_3.title)
+      }
+      if (i.title == itemAux.PRICE_3.title) {
         itemAux.PRICE_3.price = !itemAux.PRICE_3.price;
+      }
     });
-    return setItem(itemAux);
+    setItem(itemAux);
+    forceUpdate();
   }, [filtersActives]);
 
   return (
@@ -54,57 +61,67 @@ const PriceScrren = (props) => {
         flex: 1,
       }}
     >
-      <Text style={styles.H1}> Rango De Precios </Text>
+      <Text style={styles.H1}> Rango De Precios {items.PRICE_1.price} </Text>
 
       <ButtonItem
         onPress={() => onPress(filter.PRICE_1)}
-        color={items.PRICE_1.price ? "black" : "rgba(0, 0, 0, 0.01)"}
+        color={
+          items.PRICE_1.price ? color.buttonActive : color.buttonInactivePrice
+        }
       >
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_1.price ? "white" : "black"}
+          color={items.PRICE_1.price ? color.textActive : color.textInactive}
         />
       </ButtonItem>
 
       <ButtonItem
         onPress={() => onPress(filter.PRICE_2)}
-        color={items.PRICE_2.price ? "black" : "rgba(0, 0, 0, 0.01)"}
+        color={
+          items.PRICE_2.price ? color.buttonActive : color.buttonInactivePrice
+        }
       >
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_2.price ? "white" : "black"}
+          color={items.PRICE_2.price ? color.textActive : color.textInactive}
         />
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_2.price ? "white" : "black"}
+          color={items.PRICE_2.price ? color.textActive : color.textInactive}
         />
       </ButtonItem>
 
       <ButtonItem
         onPress={() => onPress(filter.PRICE_3)}
-        color={items.PRICE_3.price ? "black" : "rgba(0, 0, 0, 0.01)"}
+        color={
+          items.PRICE_3.price ? color.buttonActive : color.buttonInactivePrice
+        }
       >
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_3.price ? "white" : "black"}
+          color={items.PRICE_3.price ? color.textActive : color.textInactive}
         />
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_3.price ? "white" : "black"}
+          color={items.PRICE_3.price ? color.textActive : color.textInactive}
         />
         <FontAwesome
           name="dollar"
           size={25}
-          color={items.PRICE_3.price ? "white" : "black"}
+          color={items.PRICE_3.price ? color.textActive : color.textInactive}
         />
       </ButtonItem>
 
-      <ButtonText onPress={() => onPress(filter.PRICE_3)}>
+      <ButtonText
+        onPress={() => {
+          props.navigation.goBack();
+        }}
+      >
         <Text style={styles.text}> Aplicar </Text>
       </ButtonText>
     </View>
